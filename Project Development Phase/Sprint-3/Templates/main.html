@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <title>Handwritten Digit Recognizer</title>
+        <link rel="stylesheet" href="{{url_for('static',filename='css/main.css')}}">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://unpkg.com/feather-icons"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="heading">
+                <h1>Handwritten Digit Recognizer</h1>
+                <h2>Easy analyze and detect handwritten digits</h2>
+            </div>
+            <div class="sub_container1">
+                <div class="sub_container2">
+                    <form class="upload" action="/confirm" method="post" enctype="multipart/form-data">
+                        <!-- select -->
+                        <label id="label" for="upload-image"><i data-feather="file-plus"></i>Select File</label>
+                        <!-- upload -->
+                        <input type="file" name="photo" id="upload-image" hidden>
+                    </form>
+                    <img id="loading" src="{{url_for('static',filename='images/loading.gif')}}">
+                </div>
+            </div>
+        </div>
+
+        <script rel="text/javascript">
+            feather.replace();
+
+            form = document.querySelector(".upload")
+            label = document.querySelector('#label');
+            loading = document.querySelector("#loading")
+            select = document.querySelector("#upload-image");
+
+            console.log("working...")
+            select.addEventListener('change', (e) => {
+                e.preventDefault();
+
+                form.style.visibility = "hidden";
+                form.submit()
+                loading.style.display = 'flex';
+            })
+        </script>
+    </body>
+</html>
